@@ -42,6 +42,7 @@ function checkForDraw() {
     return comboValues.includes('X') && comboValues.includes('O') // if true then no more winning combos available = draw
   })
 
+  // update page to display draw message 
   if (isDraw) {
     const draw = document.createElement('p')
     draw.setAttribute('id', 'game-draw')
