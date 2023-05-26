@@ -9,8 +9,8 @@ body {
 }
 
 .board-container {
-  width: 50%; /* set the width of the div */
-  height: 250px; /* set the height of the div */
+  width: 50%; 
+  height: 250px; 
   background-color: gray;
   box-sizing: border-box;
   border: 1px solid red;
@@ -33,6 +33,6 @@ body {
   text-align: center;
 }
 
-#game-winner {
+.outcome {
   font-size: 80px;
 }

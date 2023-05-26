@@ -1,6 +1,7 @@
 const cells = document.querySelectorAll('.cells')
 let currentPlayer = '';
 let declaredWinner = document.querySelector('.declare-winner')
+let declareDraw = document.querySelector('.declare-draw')
 let gameOver = false
 
 const clickedCells = []
@@ -73,7 +74,17 @@ function game() {
             gameOver = true
           }
         }
+      } 
+      // basic draw criteria of game ended without winner
+      if (clickedCells.length >= 9 && !gameOver) {
+        const draw = document.createElement('p')
+        draw.setAttribute('id', 'game-draw')
+        declareDraw.appendChild(draw)
+        declareDraw.innerText = `The game ends in a draw!`
       }
+
+      // draw criteria if no winning combos left
+      
     })
   })
 }
