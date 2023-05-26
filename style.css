@@ -2,14 +2,15 @@
 
 body {
   display: flex;
-  align-items: center; /* center the div vertically */
-  justify-content: center; /* center the div horizontally */
-  height: 100vh; /* set the height of the body to the full viewport height */
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  height: 100vh; 
 }
 
 .board-container {
   width: 50%; /* set the width of the div */
-  height: 200px; /* set the height of the div */
+  height: 250px; /* set the height of the div */
   background-color: gray;
   box-sizing: border-box;
   border: 1px solid red;
@@ -19,8 +20,6 @@ body {
 .rows {
   position: absolute;
   margin: auto;
-  width: 90%;
-  height: 90%;
   border: 1px solid red;
   
 }
@@ -29,4 +28,11 @@ body {
   border: 1px solid red;
   font-size: 50px;
   margin: auto;
+  width: 150px;
+  height: 70px;
+  text-align: center;
+}
+
+#game-winner {
+  font-size: 80px;
 }

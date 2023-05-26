@@ -1,5 +1,7 @@
 const cells = document.querySelectorAll('.cells')
 let currentPlayer = '';
+let declaredWinner = document.querySelector('.declare-winner')
+let gameOver = false
 
 const clickedCells = []
 
@@ -28,3 +30,52 @@ const winningCombos = [
 ]
 
 
+function game() {
+  cells.forEach(cell => {
+    cell.addEventListener('click', (e) => {
+      const elementId = e.target.id
+      console.log(e.target.id)
+      // If the cell has already been clicked, stop the function.
+      if (clickedCells.includes(e.target.id)) {
+        return;
+      }
+      if (gameOver) return
+      if (!clickedCells.includes(e.target.id) && currentPlayer === '') {
+        clickedCells.push(e.target.id)
+        e.target.innerText = 'X'
+        gameBoard[elementId] = 'X'
+        currentPlayer = 'circle'
+      } else if (!clickedCells.includes(e.target.id) && currentPlayer === 'circle') {
+        clickedCells.push(e.target.id)
+        e.target.innerText = 'O'
+        gameBoard[elementId] = 'O'
+        currentPlayer = 'x'
+      } else if (!clickedCells.includes(e.target.id) && currentPlayer === 'x') {
+        clickedCells.push(e.target.id)
+        e.target.innerText = 'X'
+        gameBoard[elementId] = 'X'
+        currentPlayer = 'circle'
+      }
+      console.log(clickedCells)
+      console.log(gameBoard)
+
+      if (clickedCells.length >= 5) {
+        for (let i = 0; i < winningCombos.length; i++) {
+          let combo = winningCombos[i];
+          let comboValues = combo.map(id => gameBoard[id]);
+          if (comboValues.every(val => val === comboValues[0] && val !== '')) {
+            currentPlayer = comboValues[0]
+            console.log(`Player ${currentPlayer} is the winner!`);
+            const gameWinner = document.createElement('p')
+            gameWinner.setAttribute('id', 'game-winner')
+            declaredWinner.appendChild(gameWinner)
+            gameWinner.innerText = `Player ${currentPlayer} is the winner!`
+            gameOver = true
+          }
+        }
+      }
+    })
+  })
+}
+
+game()
